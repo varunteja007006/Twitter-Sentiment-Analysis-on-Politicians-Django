@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <title>Sentiment/Emotion Analysis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,300,500" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <!-- insertion templates -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">        
+  	<link rel="stylesheet" href="{% static 'insertion/css/tooplate-style.css' %}">
+  	<link rel="stylesheet" href="{% static 'insertion/css/fontawesome-all.min.css' %}"> 
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container">
+        <a class="navbar-brand" href="/"><b>Home</b></a>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+        	<ul class="navbar-nav ml-auto">
+          <li class="nav-item" ><a href="/Trending"  s class="nav-link"><b>Trending Politics</b></a></li>
+            <li class="nav-item" ><a href="/sentiment"  s class="nav-link"><b>Sentiment Analysis</b></a></li>
+           <!--<li class="nav-item"><a href="/emotion" class="nav-link"><b>Emotion Analysis</b></a></li>--> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- END nav -->
+<!-- This where cards start-->
+<section class="ftco-cover "  id="section-home" style="background-image: url({% static 'home/images/flag.jpg' %}); background-repeat: no-repeat;  background-size: 100% 100%;"  data-aos="fade"  data-stellar-background-ratio="0.5">
+  <!--row one-->
+  <div class="row  "  style="border:none" data-aos="fade-up" data-aos-delay="400">
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent">
+        <div class="card-image mt-3" style:"width:200px">
+          <img src= {% static 'home/images/president.jpg' %} >
+          <span class="card-title ml-5" style='color:black; font-weight:bold'> President of India</span>
+        </div>
+        
+        <div class="card-content">
+          <p style='color:black; text-align: justify;'>Ram Nath Kovind is an Indian politician serving as the 14th and current President of India.
+            Ram Nath Kovind was born on 1 October 1945. Kovind was nominated as a presidential candidate by the ruling NDA coalition and won the 2017 presidential election.
+            Ram Nath Kovind took the oath as the 14th President of India on 25 July 2017. Before entering politics, he was a lawyer for 16 years and practised in the Delhi High Court and the Supreme Court until 1993.    
+          </p>   
+          <a href="https://en.wikipedia.org/wiki/Ram_Nath_Kovind">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@rashtrapatibhvn">      
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3 mr-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-3" >
+          <img src= {% static 'home/images/primeminister.jpg' %} >
+          <span class="card-title ml-5 " style='color:black; font-weight:bold;'> Prime Minister of India</span>
+        </div>
+        
+        <div class="card-content">
+          <p style='color:black; text-align: justify;'>
+            Narendra Damodardas Modi is an Indian politician serving as the 14th and current Prime Minister of India since 2014. 
+            Modi is a member of the Bharatiya Janata Party (BJP) and of the Rashtriya Swayamsevak Sangh (RSS), a Hindu nationalist volunteer organisation. 
+            He was born on 17 September 1950.
+            As a Prime Minister, Modi has received consistently high approval ratings. 
+            In early 2017, a survey from Pew Research Center showed Modi to be the most popular figure in Indian politics.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Narendra_Modi">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@narendramodi">
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!--row 2--> 
+  <div class="row mt-5 "  style="border:none" data-aos="fade-up" data-aos-delay="400">
+
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent">
+        <div class="card-image mt-2" style:"width:200px">
+          <img src= {% static 'home/images/pmo.jpg' %} > 
+        </div>
+        <div class="card-title mt-3" style='color:black; font-weight:bold'>Prime Minister Office of India</div>
+        <div class="card-content">
+          <p style='color:black; text-align: justify;'>
+          The Prime Minister's Office (PMO) (IAST: Pradhānamantrī Kāryālaya) consists of the immediate staff of the 
+          Prime Minister of India, as well as multiple levels of support staff reporting to the Prime Minister. The PMO is headed 
+          by the Principal Secretary, currently Pramod Kumar Misra. The PMO was originally called the Prime Minister's Secretariat 
+          until 1977, when it was renamed during the Morarji Desai ministry.
+          <br>
+          It is part of the Government of India located in the South Block of the Secretariat Building.  
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Prime_Minister's_Office_(India)">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}            
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@PMOIndia">     
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-2" >
+          <img src= {% static 'home/images/vp.jpg' %} >
+        </div>
+        <div class="card-title mt-3" style='color:black; font-weight:bold;'>Vice President of India</div>
+        <div class="card-content" >
+          <p style='color:black; text-align: justify;'>
+            Muppavarapu Venkaiah Naidu is an Indian politician and the current Vice-President of India and the Chairman of the Rajya Sabha.
+            He was born on born 1 July 1949.
+            He took the oath as Vice-President of India and the Chairman of Rajya Sabha on 11 August 2017.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Venkaiah_Naidu">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}            
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@VPSecretariat">
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3 mr-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-2" >
+          <img src= {% static 'home/images/cmTN.jpg' %} >
+        </div>
+        <div class="card-title mt-3 " style='color:black; font-weight:bold;'>Chief Minister of Tamil Nadu</div>
+        <div class="card-content">
+          <p style='color:black; text-align: justify; '>
+            Edappadi Karuppa Palaniswami (born 12 May 1954), is an Indian politician serving as the 7th and current Chief Minister of Tamil Nadu 
+            since 16 February 2017. He is the joint coordinator of the All India Anna Dravida Munnetra Kazhagam (AIADMK). 
+            He is also serving in the government of Tamil Nadu as Minister of Highways and Minor Ports since 16 May 2011.
+            In the 1998 election he was elected as Member of Parliament, representing Tiruchengodu constituency in the 12th Lok Sabha.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Edappadi_K._Palaniswami">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}            
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@CMOTamilNadu">
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+<!--row three-->
+  <div class="row mt-5 "  style="border:none" data-aos="fade-up" data-aos-delay="400">
+
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-2" >
+          <img src= {% static 'home/images/rahul.jpg' %} >
+        </div>
+        <div class="card-title mt-3" style='color:black; font-weight:bold;'>Rahul Gandhi</div>
+        <div class="card-content">
+          <p style='color:black; text-align: justify;'>
+          Rahul Gandhi is an Indian politician and a member of the Indian Parliament representing the constituency
+          of Wayanad, Kerala in the 17th Lok Sabha. A member of the Indian National Congress, he served as the 
+          President of the Indian National Congress from 16 December 2017 to 3 July 2019. Gandhi is the chairperson 
+          of the Indian Youth Congress and the National Students Union of India.
+          He is also a trustee of Rajiv Gandhi Foundation and Rajiv Gandhi Charitable Trust.
+          </p>
+          <a  href="https://en.wikipedia.org/wiki/Rahul_Gandhi">Wiki link</a>   
+        </div>
+        
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@RahulGandhi">
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent">
+        <div class="card-image mt-2" style:"width:200px">
+          <img src= {% static 'home/images/congress.png' %} >          
+        </div>
+        <div class="card-title mt-3" style='color:black; font-weight:bold'>Indian National Congress</div>
+        <div class="card-content">
+          <p style='color:black; text-align: justify;'>
+          The Indian National Congress (often called the Congress Party or simply Congress, abbr. INC) is a political party in India with
+           widespread roots. Founded in 1885, it was the first modern nationalist movement to emerge in the British Empire in Asia and Africa.
+           Congress is one of the two major political parties in India, along with the Bharatiya Janata Party. Congress social policy is based 
+           upon the Gandhian principle of Sarvodaya–the lifting up of all sections of society–which involves the improvement of the lives of 
+           economically underprivileged and socially marginalised people.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Indian_National_Congress">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@INCIndia">
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-2" >
+          <img src= {% static 'home/images/aap.jpg' %} >
+        </div>
+        <div class="card-title mt-3 " style='color:black; font-weight:bold;'>Aam Aadmi party</div>
+        <div class="card-content">
+          <p style="color:black; text-align: justify;">
+            Aam Aadmi Party (AAP, English: Common Man's Party) is an Indian political party, formally launched on 26 November 2012, and 
+            is currently the ruling party of the National Capital Territory of Delhi. It came into existence following differences between 
+            the activists Arvind Kejriwal and Anna Hazare regarding whether or not to politicise the popular India Against Corruption movement 
+            that had been demanding a Jan Lokpal Bill since 2011. Hazare preferred that the movement should remain politically unaligned while
+            Kejriwal felt the failure of the agitation route necessitated direct political involvement.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Aam_Aadmi_Party">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@AamAadmiParty">
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m7 ml-3 mr-3">
+      <div class="card" style="border:none; background:transparent" >
+        <div class="card-image mt-2" >
+          <img src= {% static 'home/images/bjp.png' %} >
+        </div>
+        <div class="card-title mt-3" style='color:black; font-weight:bold;'>Bharathiya Janatha Party</div>        
+        <div class="card-content" >
+          <p style="color:black; text-align: justify;">
+          The Bharatiya Janata Party (transl. Indian People's Party; abbr. BJP) is one of two major political parties in India,
+          along with Indian National Congress. It has been the ruling political party of the Republic of India since 2014.The BJP's 
+          origin lies in the Bharatiya Jana Sangh, formed in 1951 by Syama Prasad Mukherjee.n 1965. The party expresses a commitment 
+          to Hindutva, and its policy has historically reflected Hindu nationalist positions.
+          The BJP advocates social conservatism and a foreign policy centred on nationalist principles. 
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Bharatiya_Janata_Party">Wiki link</a>
+        </div>
+
+        <form action="" method='POST'>
+          {% csrf_token %}
+            <input type="submit" id="sentiment_imported_tweet" name="sentiment_imported_tweet"  style='border:none; background:powderblue; opacity:0.8; width:200px'  value="@BJP4India">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--end of cards -->
+<p style='margin-left:10px; font-size:large; color:black; '> To look for other people please visit <a href="/sentiment"  style='color:blue' >Sentiment Analysis page....</a></p>
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <script src="{% static 'register/js/jquery.min.js' %}"></script>
+  <script src="{% static 'register/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'register/js/popper.min.js' %}"></script>
+  <script src="{% static 'register/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'register/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'register/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'register/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'register/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'register/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'register/js/aos.js' %}"></script>
+  <script src="{% static 'register/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'register/js/google-map.js' %}"></script>
+  <script src="{% static 'register/js/main.js' %}"></script>
+  <script src="{% static 'register/othertemplate/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'register/othertemplate/js/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'register/othertemplate/js/main.js' %}"></script>
+  <!-- insertion static -->
+  <!-- <script src="{% static 'insertion/js/jquery-3.2.1.slim.min.js' %}"></script> -->
+</html>
