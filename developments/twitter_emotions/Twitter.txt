@@ -1,0 +1,98 @@
+import pandas as pd
+import numpy as np
+import twitter
+import nltk
+import re
+import string
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+
+twitter_api = twitter.Api(consumer_key='YOUR_CONSUMER_KEY',
+                        consumer_secret='YOUR_CONSUMER_SECRET',
+                        access_token_key='YOUR_ACCESS_TOKEN_KEY',
+                        access_token_secret='YOUR_ACCESS_TOKEN_SECRET')
+
+# test authentication
+print(twitter_api.VerifyCredentials())
+
+def buildTestSet(search_keyword):
+    try:
+        tweets_fetched = twitter_api.GetSearch(search_keyword, count = 100)
+        
+        print("Fetched " + str(len(tweets_fetched)) + " tweets for the term " + search_keyword)
+        
+        return [{"text":status.text, "label":None} for status in tweets_fetched]
+    except:
+        print("Unfortunately, something went wrong..")
+        return None
+
+
+def load_dataset(twittertrain, cols):
+    dataset = pd.read_csv(twittertrain, encoding='latin-1')
+    dataset.columns = cols
+    return dataset
+def load_dataset(twitter test, cols):
+    dataset = pd.read_csv(twitter test, encoding='latin-1')
+    dataset.columns = cols
+    return dataset
+def remove_unwanted_cols(dataset, cols):
+    for col in cols:
+        del dataset[col]
+    return dataset
+
+class PreProcessTweets:
+    def __init__(self):
+        self._stopwords = set(stopwords.words('english') + list(punctuation) + ['AT_USER','URL'])
+        
+    def processTweets(self, list_of_tweets):
+        processedTweets=[]
+        for tweet in list_of_tweets:
+            processedTweets.append((self._processTweet(tweet["text"]),tweet["label"]))
+        return processedTweets
+    
+    def _processTweet(self, tweet):
+        tweet = tweet.lower() # convert text to lower-case
+        tweet = re.sub('((www\.[^\s]+)|(https?://[^\s]+))', 'URL', tweet) # remove URLs
+        tweet = re.sub('@[^\s]+', 'AT_USER', tweet) # remove usernames
+        tweet = re.sub(r'#([^\s]+)', r'\1', tweet) # remove the # in #hashtag
+        tweet = word_tokenize(tweet) # remove repeated characters (helloooooooo into hello)
+        return [word for word in tweet if word not in self._stopwords]
+tweetProcessor = PreProcessTweets()
+preprocessedTrainingSet = tweetProcessor.processTweets(twittertrain.csv)
+preprocessedTrainingSet = tweetProcessor.processTweets(twitter test.csv)
+
+#feature Extraction
+def buildVocabulary(preprocessedTrainingData):
+    all_words = []
+    
+    for (words, sentiment) in preprocessedTrainingData:
+        all_words.extend(words)
+
+    wordlist = nltk.FreqDist(all_words)
+    word_features = wordlist.keys()
+
+def extract_features(tweet):
+    tweet_words = set(tweet)
+    features = {}
+    for word in word_features:
+        features['contains(%s)' % word] = (word in tweet_words)
+    return features 
+    
+    return word_features
+word_features = buildVocabulary(preprocessedTrainingData)
+trainingFeatures = nltk.classify.apply_features(extract_features, preprocessedTrainingData)
+
+ Model selection
+NBayesClassifier=nltk.NaiveBayesClassifier.train(trainingFeatures)
+NBResultLabels = [NBayesClassifier.classify(extract_features(tweet[0])) for tweet in preprocessedTestSet]
+# get the majority vote
+if NBResultLabels.count('positive') > NBResultLabels.count('negative'):
+    print("Positive ")
+    print("Positive  = " + str(100*NBResultLabels.count('positive')/len(NBResultLabels)) + "%")
+elif NBResultLabels.count('positive') < NBResultLabels.count('negative'):
+    print("Negative ")
+    print("Negative  = " + str(100*NBResultLabels.count('negative')/len(NBResultLabels)) + "%")
+else:
+    print("Neutral") 
+    

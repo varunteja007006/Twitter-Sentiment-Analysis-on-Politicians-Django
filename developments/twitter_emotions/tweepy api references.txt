@@ -1,0 +1,1 @@
+'favorite', 'favorite_count','geo', 'id', 'id_str','retweet', 'retweet_count', 'retweeted', 'retweets','user','created_at']
