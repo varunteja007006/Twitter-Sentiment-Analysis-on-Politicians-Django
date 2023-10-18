@@ -56,21 +56,21 @@
             <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500">Sentiment Analysis</h1>
             <h2 class="h5 ftco-subheading mb-5" data-aos="fade-up"  data-aos-delay="600"><strong>Tweet</strong> - {{ tweet }}</h2>
               <div class="row">
-                  {% ifequal sentiment 'Positive' %}
+                  {% if sentiment == 'Positive' %}
                   <div class="box counter-left md-5 col-2" data-aos="fade-up" data-aos-delay="700">
                   <img src="{% static 'icons/combo_positive_glow.png' %}">
                   </div>
-                  {% endifequal %}
-                  {% ifequal sentiment 'Neutral' %}
+                  {% endif %}
+                  {% if sentiment == 'Neutral' %}
                   <div class="box counter-left md-5 col-2" data-aos="fade-up" data-aos-delay="700">
                   <img src="{% static 'icons/combo_neutral_glow.png' %}">
                   </div>
-                  {% endifequal %}
-                  {% ifequal sentiment 'Negative' %}
+                  {% endif %}
+                  {% if sentiment == 'Negative' %}
                   <div class="box counter-left md-5 col-2" data-aos="fade-up" data-aos-delay="700">
                   <img src="{% static 'icons/combo_negative_glow.png' %}">
                   </div>
-                  {% endifequal %}
+                  {% endif %}
               </div>
               <br>
             <h2 class="h5 ftco-subheading mb-5" data-aos="fade-up"  data-aos-delay="800"><strong>Sentiment</strong> - {{ sentiment }}</h2>

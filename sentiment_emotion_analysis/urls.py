@@ -20,7 +20,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sentiment/', include('sentiment.urls')),
     path('', include('sentiment_or_emotion.urls')),
+    path('sentiment/', include('sentiment.urls')),
     path('emotion/', include('emotion.urls')),
 ]
